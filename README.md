@@ -16,7 +16,7 @@ Variables | Separators |
 my_var1   | ,          |
 myvar2    |            |
 my3_3var  |            |
-_var_     |            |
+\_var_4   |            |
 
 
 ## Input example
