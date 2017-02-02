@@ -18,6 +18,8 @@ myvar2    |            |
 my3_3var  |            |
 \_var_4   |            |
 
+- Varibles
+Identifiers begin with a lowercase letter or underscore, followed by zero or more lowercase letters, underscores and/or digits.
 
 ## Input example
 ```
