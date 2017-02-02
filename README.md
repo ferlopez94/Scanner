@@ -25,12 +25,12 @@ This version recognizes:
 - End of program
   - $
   
-## Input example:
+## Input example
 ```
 12 - 5..00(3 * 7.8) - 0.56$
 ```
 
-## Output example:
+## Output example
 ```
 Integer 12
 Binary operator -
@@ -48,5 +48,5 @@ End of program
 
 At the end of execution, an array containing the tokens formed from the last entry is returned.
 
-## Finite Deterministic Automaton:
+## Finite Deterministic Automaton
 ![Finite Deterministc Automato](/img/fda.png)
