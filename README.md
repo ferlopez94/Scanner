@@ -2,28 +2,13 @@
 Implementation of a scanner by coding a Finite Deterministic Automaton as a Transition Matrix.
 
 This version recognizes:
-- Integer numbers
-  - 12
-  - 354
-  - 20
-  
-- Float numbers
-  - 9.0
-  - 3.54
-  - 20.1234
-  
-- Binary operators
-  - +
-  - -
-  - *
-  - /
-  
-- Delimiters
-  - (
-  - )
-  
-- End of program
-  - $
+
+Integer numbers | Integer numbers | Binary operators | Delimiters | End of program | Illegal expressions
+--------------- | --------------- | ---------------- | ---------- | -------------- | --------------
+ 12             | 9.0             | +                | (          | $              | %
+ 354            | 3.54            | -                | )          |                | &
+ 20             | 20.1234         | *                |            |                | .0
+                |                 | /                |            |                | 1...00
   
 ## Input example
 ```
