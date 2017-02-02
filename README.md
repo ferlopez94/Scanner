@@ -3,7 +3,7 @@ Implementation of a scanner by coding a Finite Deterministic Automaton as a Tran
 
 This version recognizes:
 
-Integer numbers | Integer numbers | Binary operators | Delimiters | End of program | Illegal expressions
+Integer numbers | Float numbers   | Binary operators | Delimiters | End of program | Illegal expressions
 --------------- | --------------- | ---------------- | ---------- | -------------- | --------------
  12             | 9.0             | +                | (          | $              | %
  354            | 3.54            | -                | )          |                | &
