@@ -21,6 +21,8 @@ const BOP = 102;  // Binary operator
 const LLP = 103;  // Delimiter: left parenthesis
 const RRP = 104;  // Delimiter: right parenthesis
 const END = 105;  // End of program
+const VAR = 106;  // Variable
+const COM = 107;  // Separator: comma
 const ERR = 200;  // Lexical error: unknown word
 
 // Transition Matrix: FDA coding
@@ -28,12 +30,13 @@ const ERR = 200;  // Lexical error: unknown word
 // Column = Transition
 // States > 99 are final states (acceptors)
 // Special case: State 200 = ERROR
-//            dig  op    (    )   odd  spa   .    $
-const MT = [[   1, BOP, LLP, RRP,   4,   0,   4, END],    // State 0 - Initial state
-            [   1, INT, INT, INT,   4, INT,   2, INT],    // State 1 - Integer numbers
-            [   3, ERR, ERR, ERR,   4, ERR,   4, ERR],    // State 2 - First decimal number
-            [   3, FLT, FLT, FLT,   4, FLT,   4, FLT],    // State 3 - Decimal numbers remaining
-            [   4, ERR, ERR, ERR,   4, ERR,   4, ERR]];   // State 4 - Error state
+//            dig  op    (    )   odd  spa   .    $   let   _    ,
+const MT = [[   1, BOP, LLP, RRP,   4,   0,   4, END,   5,   5, COM],    // State 0 - Initial state
+            [   1, INT, INT, INT,   4, INT,   2, INT,   4,   4, INT],    // State 1 - Integer numbers
+            [   3, ERR, ERR, ERR,   4, ERR,   4, ERR,   4,   4, ERR],    // State 2 - First decimal number
+            [   3, FLT, FLT, FLT,   4, FLT,   4, FLT,   4,   4, FLT],    // State 3 - Decimal numbers remaining
+            [   4, ERR, ERR, ERR,   4, ERR,   4, ERR,   4,   4, ERR],    // State 4 - Error state
+            [   5, VAR, VAR, VAR,   4, VAR,   4, VAR,   5,   5, VAR]];   // State 5 - Variables
 
 function scanner(input) {
   var state = 0;
@@ -87,6 +90,14 @@ function scanner(input) {
         console.log(tokens);
         return -1;
         break;
+      case VAR:
+        read = false;
+        console.log('Variable', lexema);
+        break;
+      case COM:
+        lexema += character;
+        console.log('Separator', lexema);
+        break;
       case ERR:
         read = false;
         console.log('Unexpected token', lexema);
@@ -117,7 +128,16 @@ function filter(character) {
 			return 6; // Decimal point
 		case '$':
 			return 7; // End of program
+    case 'a': case 'b': case 'c': case 'd': case 'e': case 'f': case 'g': case 'h':
+    case 'i': case 'j': case 'k': case 'l': case 'm': case 'n': case 'o': case 'p':
+    case 'q': case 'r': case 's': case 't': case 'u': case 'v': case 'w': case 'x':
+		case 'y': case 'z':
+			return 8; // Lowercase letters
+    case '_':
+      return 9;
+    case ',':
+      return 10;
 		default:
-			return 4; // Weird character (ilegal)
+			return 4; // Weird character (illegal)
   }
 }

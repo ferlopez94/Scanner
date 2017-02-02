@@ -9,14 +9,25 @@ Integer numbers | Integer numbers | Binary operators | Delimiters | End of progr
  354            | 3.54            | -                | )          |                | &
  20             | 20.1234         | *                |            |                | .0
                 |                 | /                |            |                | 1...00
-  
+                |                 |                  |            |                | var.5
+
+Variables | Separators |
+--------- | ---------- |
+my_var1   | ,          |
+myvar2    |            |
+my3_3var  |            |
+_var_     |            |
+
+
 ## Input example
 ```
-12 - 5..00(3 * 7.8) - 0.56$
+my_var1, 12 - 5..00(3 * 7.8) - 0.56$
 ```
 
 ## Output example
 ```
+Variable my_var1
+Separator ,
 Integer 12
 Binary operator -
 Unexpected token 5..00
@@ -28,7 +39,7 @@ Delimiter )
 Binary operator -
 Float 0.56
 End of program
-[ 100, 102, 200, 103, 100, 102, 101, 104, 102, 101 ]
+[ 106, 107, 100, 102, 200, 103, 100, 102, 101, 104, 102, 101 ]
 ```
 
 At the end of execution, an array containing the tokens formed from the last entry is returned.
